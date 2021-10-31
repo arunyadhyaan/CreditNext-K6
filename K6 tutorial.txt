@@ -1,0 +1,64 @@
+https://github.com/arunk2493/k6performancetesting.git
+
+to run a file
+* k6 run Postman/target.js
+
+to run with multiple users
+* k6 run Tests/01-script.js --vus 5 --duration 5s --rps 1   
+
+to push to influxdb
+* k6 run Tests/01-script.js --out influxdb=http://localhost:8086/k6db --vus 5 --duration 5s
+
+influx db version- 1.8.9
+https://www.youtube.com/watch?v=DmIWgkawcw4
+write commands from influx.exe
+runs on port- 8086
+database name- k6db
+*use k6db- query to connect to grafana
+
+Grafana
+runs on port-3000
+run as admin the server.exe
+first time use- admin, admin username pwd
+dashboard name- k6 load testing results
+
+
+Postman
+bearer token- https://www.youtube.com/watch?v=p3eidf5riug
+https://jwt.io/ - says the token information
+run postman from commandline- pre-requisites- node.js, newman
+
+newman
+to install newman- npm install -g newman
+export collection and run the following command from that folder
+*newman run <collectionname.json>
+
+To install postman to k6
+* npm install -g postman-to-k6
+
+export collection file and environment file from postman to the k6 folder. it gets reflected in the k6 project.
+
+To run the postman script
+open git basch from where the coll file is placed and run the following
+* postman-to-k6 <collection file name.json> -e <environment file name.json> -o <target file name.js>
+The target file is created in the same folder
+
+Framework
+- Environemnt
+- TEst data
+- Utility common functions
+- Test scripts
+check, rate, trend
+init, setup, default function and teardown
+
+Usage of HAR
+open browser in incognito mode, press f12 and check preserve logs.
+after navigating, select any API and save as .HAR file
+install the converter
+* npm install -g har-to-k6
+open git bash here from the loc where the har file is stored and execute the following
+* har-to-k6 <file name> -o <target file name>
+ex- har-to-k6 k6.io.har-o loadtest.js
+loadtest.js is created in the ssame location
+
+executor options- https://github.com/grafana/k6/releases/tag/v0.27.0
